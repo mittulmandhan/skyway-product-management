@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import { ProductModule } from './product/product.module';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import {MatButtonModule} from '@angular/material/button';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    ProductModule
   ],
   providers: [],
   bootstrap: [AppComponent]
