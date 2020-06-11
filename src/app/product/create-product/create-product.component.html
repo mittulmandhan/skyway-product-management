@@ -1,1 +1,53 @@
-<p>create-product works!</p>
+<div style="margin: auto;">
+
+    <h2>Create Product</h2>
+    <mat-card style="max-width: 600px; margin: auto;">
+        <form class="example-form">
+            <div style="display: flex; justify-content: space-between;">
+                <mat-form-field class="example-full-width1">
+                    <mat-label> name</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field class="example-full-width1">
+                    <mat-label>Category</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+
+            <p>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Address</mat-label>
+                    <textarea matInput placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Address 2</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+            </p>
+
+            <div style="display: flex;">
+                <mat-form-field border class="example-full-width">
+                    <mat-label>City</mat-label>
+                    <input matInput placeholder="Ex. San Francisco">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>State</mat-label>
+                    <input matInput placeholder="Ex. California">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Postal Code</mat-label>
+                    <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="94043">
+                    <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-card>
+
+</div>
+
+
+<!-- <mat-grid-list cols="4" rowHeight="25px">
+    <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color">
+        {{tile.text}}
+    </mat-grid-tile>
+</mat-grid-list> -->
