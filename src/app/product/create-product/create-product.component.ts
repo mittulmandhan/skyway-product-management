@@ -8,13 +8,6 @@ import { FormGroup, FormControl, ReactiveFormsModule, Validators, FormBuilder } 
 export class CreateProductComponent implements OnInit {
 
   public createProductForm: FormGroup;
-  formGroup;
-  tiles: Tile[] = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
 
   constructor(public formBuilder: FormBuilder) {
     this.createProductForm = new FormGroup({
