@@ -1,1 +1,65 @@
-<p>create-component works!</p>
+<div>
+    <h2>Create Component</h2>
+    <mat-card>
+        <form>
+            <div class="dual-field-div">
+                <mat-form-field>
+                    <mat-label>Component Name</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Component Type</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+
+            <br>
+            <h3><b>Properties</b></h3>
+
+            <div>
+                <button addLabel mat-mini-fab color="primary" aria-label="Add Label">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <div class="dual-field-div" #labels>
+                    <mat-form-field>
+                        <mat-label>Label</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Value</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <div style="display: grid;padding-top: 10px;">
+                <h3 style="border-top: 10px;" style="grid-row: 1;"><b>Vendor Details</b></h3>
+                <div class="dual-field-div" style="grid-row: 2;">
+                    <mat-form-field>
+                        <mat-label>Vendor Name</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Component Price</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
+                <mat-form-field style="grid-row: 3;">
+                    <mat-label>Vendor Address</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+                <mat-form-field style="grid-row: 4;">
+                    <mat-label>Remarks</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+            </div>
+            <div class="dual-field-div" style="justify-content: space-around;">
+                <button mat-raised-button color="accent" type="submit">Create Component</button>
+                <button mat-raised-button color="accent">Save Draft</button>
+            </div>
+        </form>
+
+    </mat-card>
+</div>

@@ -1,0 +1,9 @@
+.mat-card {
+    max-width: 600px;
+    margin: auto;
+}
+
+.dual-field-div {
+    display: flex;
+    justify-content: space-between;
+}
