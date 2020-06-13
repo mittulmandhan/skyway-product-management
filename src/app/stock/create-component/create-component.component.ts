@@ -26,7 +26,8 @@ export class CreateComponentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.labels.push(1);
+    this.vendors.push(1);
   }
 
   addLabel() {

@@ -20,7 +20,6 @@ import { MatOptionModule } from '@angular/material/core';
 @NgModule({
   declarations: [CreateComponentComponent,
     DualComponent,
-    AddLabelDirective,
     AddVendorComponent
   ],
   imports: [
