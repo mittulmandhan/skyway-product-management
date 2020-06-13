@@ -1,10 +1,14 @@
 <div class="dual-field-div">
     <mat-form-field>
-        <mat-label>Label</mat-label>
-        <input matInput>
+        <mat-label>Vendor Name</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let vendor of vendorList" [value]="vendor">
+                {{vendor}}
+            </mat-option>
+        </mat-select>
     </mat-form-field>
     <mat-form-field>
-        <mat-label>Value</mat-label>
+        <mat-label>Component Price</mat-label>
         <input matInput>
     </mat-form-field>
     <button mat-icon-button color="warn" style="grid-row: 1;" aria-label="Add Label">

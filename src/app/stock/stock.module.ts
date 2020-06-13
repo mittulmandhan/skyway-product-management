@@ -13,12 +13,15 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { DualComponent } from './dual/dual.component';
-
+import { MatSelectModule } from '@angular/material/select';
+import { AddVendorComponent } from './add-vendor/add-vendor.component';
+import { MatOptionModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [CreateComponentComponent,
     DualComponent,
-    AddLabelDirective
+    AddLabelDirective,
+    AddVendorComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +34,9 @@ import { DualComponent } from './dual/dual.component';
     FormsModule,
     MatGridListModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   providers: [
 

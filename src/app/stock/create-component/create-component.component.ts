@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
-import { FormGroup, FormControl, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, ReactiveFormsModule, Validators, FormBuilder, FormArray } from '@angular/forms';
+import { DualComponent } from '../dual/dual.component';
 
 @Component({
   selector: 'app-create-component',
@@ -9,31 +10,31 @@ import { FormGroup, FormControl, ReactiveFormsModule, Validators, FormBuilder } 
 export class CreateComponentComponent implements OnInit {
 
   createComponentForm: FormGroup;
+  public labels = [];
+  public vendors = [];
 
 
   constructor(private render: Renderer2, private er: ElementRef) {
-    this.createComponentForm = new FormGroup({
-      componentName: new FormControl(),
-      componentType: new FormControl(),
-      labels: new FormGroup({}),
-      vendorDetails: new FormGroup({
-        vendorName: new FormControl(),
-        componentPrice: new FormControl(),
-        vendorAddress: new FormControl(),
-        remarks: new FormControl()
-      })
-    });
+    // this.createComponentForm =
+    //   new FormGroup({
+    //     componentName: new FormControl(),
+    //     componentType: new FormControl(),
+    //     remarks: new FormControl(),
+    //     labels: this.labels,
+    //     vendorDetails: this.vendors
+    //  });
   }
 
   ngOnInit(): void {
+
   }
 
-  click() {
-      // Flex Div Tag(it will contain the label and value field)
-      const div = this.render.createElement('app-dual');
-      this.render.appendChild(this.render.parentNode(this.er.nativeElement), div);
+  addLabel() {
+    this.labels.push(1);
+  }
 
-
+  addVendor() {
+    this.vendors.push(1);
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-dual',
@@ -7,11 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DualComponent implements OnInit {
 
-  constructor() {
+  // @Output() event = new EventEmitter();
+
+// const task = (items: Array<DualComponent>, currentLabel = this) => {
+//     items.splice();
+//   }
+
+constructor() {
 
   }
 
-  ngOnInit(): void {
+ngOnInit(): void {
+  }
+
+removeLabel() {
+
   }
 
 }
