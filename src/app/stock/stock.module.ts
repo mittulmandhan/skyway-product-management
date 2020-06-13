@@ -1,4 +1,3 @@
-import { AddLabelDirective } from './stock-directives/add-label';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CreateComponentComponent } from './create-component/create-component.component';
