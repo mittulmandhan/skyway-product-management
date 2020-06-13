@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -10,7 +10,8 @@ export class CreateComponentComponent implements OnInit {
 
   createComponentForm: FormGroup;
 
-  constructor() {
+
+  constructor(private render: Renderer2, private er: ElementRef) {
     this.createComponentForm = new FormGroup({
       componentName: new FormControl(),
       componentType: new FormControl(),
@@ -25,6 +26,14 @@ export class CreateComponentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  click() {
+      // Flex Div Tag(it will contain the label and value field)
+      const div = this.render.createElement('app-dual');
+      this.render.appendChild(this.render.parentNode(this.er.nativeElement), div);
+
+
   }
 
 }

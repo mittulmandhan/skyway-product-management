@@ -1,4 +1,4 @@
-import { AddLabelDirective } from './../directives/stock-directives/add-label';
+import { AddLabelDirective } from './stock-directives/add-label';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CreateComponentComponent } from './create-component/create-component.component';
@@ -12,10 +12,12 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
+import { DualComponent } from './dual/dual.component';
 
 
 @NgModule({
   declarations: [CreateComponentComponent,
+    DualComponent,
     AddLabelDirective
   ],
   imports: [
