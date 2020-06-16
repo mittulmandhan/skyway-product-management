@@ -1,53 +1,56 @@
-<div>
-    <h2>Create Component</h2>
+<h2>Create Component</h2>
     <mat-card>
-        <form>
+        <!------------------------------------------ Create Component Form --------------------------------------------->
+        <form [formGroup]="createComponentForm" (submit)="onSubmit()">
             <div class="dual-field-div">
                 <mat-form-field>
                     <mat-label>Component Name</mat-label>
-                    <input matInput>
+                    <input matInput formControlName="componentName">
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Component Type</mat-label>
-                    <input matInput>
+                    <input matInput formControlName="componentType">
                 </mat-form-field>
             </div>
 
+        <br>
+        
+        <!-------------------------------------------- Labels ------------------------------------------------>
+        <div style="display: grid;" formArrayName="labels">
+            <h3 style="grid-row: 1;"><b>Properties</b></h3>
+            <button (click)="addLabel()" mat-mini-fab color="primary" style="grid-row: 2;" aria-label="Add Label">
+                <mat-icon >add</mat-icon>
+            </button>
             <br>
-            <h3><b>Properties</b></h3>
-
-            <div style="display: grid;">
-                <button (click)="addLabel()" mat-mini-fab color="primary" style="grid-row: 1;" aria-label="Add Label">
-                        <mat-icon >add</mat-icon>
-                    </button>
-                <div class="dynamic" style="grid-row: 2;">
-                    <app-dual *ngFor="let l of labels"></app-dual>
-
-                </div>
+            <div *ngFor="let label of labels.controls; index as idx">
+                <app-dual style="grid-row: 3;"  [formGroupName]="idx" [labelForm]="label" [idx]="idx" [disableRemove]="labels.length < 2" (idxToRemove)="removeLabel($event)"></app-dual>
             </div>
+        </div>
 
-            <mat-form-field style="display: grid;">
-                <mat-label>Remarks</mat-label>
-                <textarea matInput></textarea>
-            </mat-form-field>
+        <!-------------------------------------------- Remarks ------------------------------------------------>
+        <mat-form-field style="display: grid;">
+            <mat-label>Remarks</mat-label>
+            <textarea matInput formControlName="remarks"></textarea>
+        </mat-form-field>
 
-            <mat-divider></mat-divider>
+        <mat-divider></mat-divider>
 
-            <div style="display: grid;">
-                <h3 style="grid-row: 1;"><b>Vendor Details</b></h3>
-                <button (click)="addVendor()" mat-mini-fab color="primary" style="grid-row: 2;" aria-label="Add Vendor">
-                        <mat-icon>add</mat-icon>
-                    </button>
-                <div style="grid-row: 3;">
-                    <app-add-vendor *ngFor="let v of vendors"></app-add-vendor>
-
-                </div>
+        <!------------------------------------------- Vendor Details ------------------------------------------------->
+        <div style="display: grid;" formArrayName="vendorDetails">
+            <h3 style="grid-row: 1;"><b>Vendor Details</b></h3>
+            <button (click)="addVendor()" mat-mini-fab color="primary" style="grid-row: 2;" aria-label="Add Vendor">
+                <mat-icon>add</mat-icon>
+            </button>
+            <br>
+            <div  *ngFor="let vd of vendors.controls; index as idx" >
+                <app-add-vendor style="grid-row: 3;" [formGroupName]="idx" [vendorForm]="vd" [idx]="idx" [disableRemove]="vendors.length < 2" (idxToRemove)="removeVendor($event)"></app-add-vendor>
             </div>
-            <div class="dual-field-div" style="justify-content: space-around; margin-top: 10px">
-                <button mat-raised-button color="accent" type="submit">Save Component</button>
-            </div>
+        </div>
 
-        </form>
+        <!---------------------------------------------- Submit ----------------------------------------------------->
+        <div class="dual-field-div" style="justify-content: space-around; margin-top: 10px">
+            <button mat-raised-button color="accent" type="submit">Save Component</button>
+        </div>
 
-    </mat-card>
-</div>
+    </form>
+</mat-card>

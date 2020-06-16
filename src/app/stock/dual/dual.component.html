@@ -1,13 +1,13 @@
-<div class="dual-field-div">
+<div class="dual-field-div" [formGroup]="labelForm">
     <mat-form-field>
         <mat-label>Label</mat-label>
-        <input matInput>
+        <input matInput name="label" id="label" formControlName="label">
     </mat-form-field>
     <mat-form-field>
         <mat-label>Value</mat-label>
-        <input matInput>
+        <input matInput name="value" id="value" formControlName="value">
     </mat-form-field>
-    <button mat-icon-button color="warn" style="grid-row: 1;" aria-label="Add Label">
+    <button mat-icon-button color="warn" style="grid-row: 1;" aria-label="Add Label" [disabled]="disableRemove" (click)="idxToRemove.emit(idx)">
         <mat-icon >clear</mat-icon>
     </button>
 </div>

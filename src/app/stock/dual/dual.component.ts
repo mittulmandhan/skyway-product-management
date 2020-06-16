@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -6,6 +7,12 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./dual.component.css']
 })
 export class DualComponent implements OnInit {
+
+  @Input() labelForm: FormGroup;
+  @Input() idx: number;
+  @Input() disableRemove: boolean;
+  @Output() idxToRemove: EventEmitter<number> = new EventEmitter<number>();
+
 
   // @Output() event = new EventEmitter();
 

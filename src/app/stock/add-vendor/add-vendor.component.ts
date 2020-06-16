@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-add-vendor',
@@ -6,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-vendor.component.css']
 })
 export class AddVendorComponent implements OnInit {
+
+  @Input() vendorForm: FormGroup;
+  @Input() idx: number;
+  @Input() disableRemove: boolean;
+  @Output() idxToRemove: EventEmitter<number> = new EventEmitter<number>();
 
   public vendorList: Array<string>;
 
