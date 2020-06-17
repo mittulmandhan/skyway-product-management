@@ -1,17 +1,18 @@
 <div class="dual-field-div" [formGroup]="vendorForm">
     <mat-form-field>
         <mat-label>Vendor Name</mat-label>
-        <mat-select name="vendorName" id="vendorName" formControlName="vendorName">
-            <mat-option *ngFor="let vendor of vendorList" [value]="vendor">
-                {{vendor}}
+        <input matInput type="text" name="vendorName" id="vendorName" formControlName="vendorName" placeholder="eg: Guru Kirpa Electronics" [matAutocomplete]="autoVendor">
+        <mat-autocomplete #autoVendor="matAutocomplete">
+            <mat-option *ngFor="let option of filteredVendorList | async" [value]="option">
+                {{ option }}
             </mat-option>
-        </mat-select>
+        </mat-autocomplete>
     </mat-form-field>
     <mat-form-field>
         <mat-label>Component Price</mat-label>
-        <input matInput name="componentPrice" id="componentPrice" formControlName="componentPrice">
+        <input matInput type="number" name="componentPrice" id="componentPrice" formControlName="componentPrice">
     </mat-form-field>
     <button mat-icon-button color="warn" style="grid-row: 1;" aria-label="Add Vendor" [disabled]="disableRemove" (click)="idxToRemove.emit(idx)">
-        <mat-icon >clear</mat-icon>
+        <mat-icon >remove</mat-icon>
     </button>
 </div>

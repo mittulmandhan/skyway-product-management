@@ -1,5 +1,7 @@
 import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators, FormBuilder, FormArray } from '@angular/forms';
+import { Observable } from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-component',
@@ -11,6 +13,9 @@ export class CreateComponentComponent implements OnInit {
   createComponentForm: FormGroup;
   // public labels = [];
   // public vendors = [];
+
+  public componentTypeList: Array<string> = ['a', 'z', 'aa', 'ab', 'no', 'yes' ];
+  filteredComponentList: Observable<string[]>;
 
 
   constructor(private render: Renderer2, private er: ElementRef, private fb: FormBuilder) {
@@ -28,6 +33,18 @@ export class CreateComponentComponent implements OnInit {
   ngOnInit(): void {
     this.labels.push(this.labelFormGroup);
     this.vendors.push(this.vendorFormGroup);
+
+    this.filteredComponentList = (this.createComponentForm.get('componentType') as FormControl).valueChanges
+                                 .pipe(
+                                    startWith(''),
+                                    map(value => this._filter(value))
+                                 );
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.componentTypeList.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   // get a new label form group

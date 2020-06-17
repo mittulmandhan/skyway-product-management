@@ -15,6 +15,7 @@ import { DualComponent } from './dual/dual.component';
 import { MatSelectModule } from '@angular/material/select';
 import { AddVendorComponent } from './add-vendor/add-vendor.component';
 import { MatOptionModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [CreateComponentComponent,
@@ -34,7 +35,8 @@ import { MatOptionModule } from '@angular/material/core';
     MatButtonModule,
     MatDividerModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatAutocompleteModule
   ],
   providers: [
 
