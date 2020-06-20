@@ -1,65 +1,61 @@
-<div>
-    <h2>Create Component</h2>
+<h2>Create Component</h2>
     <mat-card>
-        <form>
+        <!------------------------------------------ Create Component Form --------------------------------------------->
+        <form [formGroup]="createComponentForm" (submit)="onSubmit()">
             <div class="dual-field-div">
                 <mat-form-field>
                     <mat-label>Component Name</mat-label>
-                    <input matInput>
+                    <input matInput formControlName="componentName">
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Component Type</mat-label>
-                    <input matInput>
+                    <input matInput type="text" formControlName="componentType" placeholder="Select" [matAutocomplete]="auto" >
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredComponentList | async" [value]="option">
+                            {{ option }}
+                        </mat-option>
+                    </mat-autocomplete>
                 </mat-form-field>
             </div>
 
+        <br>
+        
+        <!-------------------------------------------- Labels ------------------------------------------------>
+        <div style="display: grid;" formArrayName="labels">
+            <h3 style="grid-row: 1;"><b>Properties</b></h3>
+            <button (click)="addLabel()" mat-mini-fab color="primary" style="grid-row: 2;" aria-label="Add Label">
+                <mat-icon>add</mat-icon>
+            </button>
             <br>
-            <h3><b>Properties</b></h3>
-
-            <div>
-                <button addLabel mat-mini-fab color="primary" aria-label="Add Label">
-                    <mat-icon>add</mat-icon>
-                </button>
-                <div class="dual-field-div" #labels>
-                    <mat-form-field>
-                        <mat-label>Label</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Value</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                </div>
+            <div *ngFor="let label of labels.controls; index as idx">
+                <app-dual style="grid-row: 3;"  [formGroupName]="idx" [labelForm]="label" [idx]="idx" [disableRemove]="labels.length < 2" (idxToRemove)="removeLabel($event)"></app-dual>
             </div>
+        </div>
 
-            <mat-divider></mat-divider>
+        <!-------------------------------------------- Remarks ------------------------------------------------>
+        <mat-form-field style="display: grid;">
+            <mat-label>Remarks</mat-label>
+            <textarea matInput formControlName="remarks"></textarea>
+        </mat-form-field>
 
-            <div style="display: grid;padding-top: 10px;">
-                <h3 style="border-top: 10px;" style="grid-row: 1;"><b>Vendor Details</b></h3>
-                <div class="dual-field-div" style="grid-row: 2;">
-                    <mat-form-field>
-                        <mat-label>Vendor Name</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Component Price</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                </div>
-                <mat-form-field style="grid-row: 3;">
-                    <mat-label>Vendor Address</mat-label>
-                    <textarea matInput></textarea>
-                </mat-form-field>
-                <mat-form-field style="grid-row: 4;">
-                    <mat-label>Remarks</mat-label>
-                    <textarea matInput></textarea>
-                </mat-form-field>
+        <mat-divider></mat-divider>
+
+        <!------------------------------------------- Vendor Details ------------------------------------------------->
+        <div style="display: grid;" formArrayName="vendorDetails">
+            <h3 style="grid-row: 1;"><b>Vendor Details</b></h3>
+            <button (click)="addVendor()" mat-mini-fab color="primary" style="grid-row: 2;" aria-label="Add Vendor">
+                <mat-icon>add</mat-icon>
+            </button>
+            <br>
+            <div  *ngFor="let vd of vendors.controls; index as idx" >
+                <app-add-vendor style="grid-row: 3;" [formGroupName]="idx" [vendorForm]="vd" [idx]="idx" [disableRemove]="vendors.length < 2" (idxToRemove)="removeVendor($event)"></app-add-vendor>
             </div>
-            <div class="dual-field-div" style="justify-content: space-around;">
-                <button mat-raised-button color="accent" type="submit">Create Component</button>
-                <button mat-raised-button color="accent">Save Draft</button>
-            </div>
-        </form>
+        </div>
 
-    </mat-card>
-</div>
+        <!---------------------------------------------- Submit ----------------------------------------------------->
+        <div class="dual-field-div" style="justify-content: space-around; margin-top: 10px">
+            <button mat-raised-button color="accent" type="submit">Save Component</button>
+        </div>
+
+    </form>
+</mat-card>

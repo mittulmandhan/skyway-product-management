@@ -1,0 +1,18 @@
+<div class="dual-field-div" [formGroup]="vendorForm">
+    <mat-form-field>
+        <mat-label>Vendor Name</mat-label>
+        <input matInput type="text" name="vendorName" id="vendorName" formControlName="vendorName" placeholder="eg: Guru Kirpa Electronics" [matAutocomplete]="autoVendor">
+        <mat-autocomplete #autoVendor="matAutocomplete">
+            <mat-option *ngFor="let option of filteredVendorList | async" [value]="option">
+                {{ option }}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Component Price</mat-label>
+        <input matInput type="number" name="componentPrice" id="componentPrice" formControlName="componentPrice">
+    </mat-form-field>
+    <button mat-icon-button color="warn" style="grid-row: 1;" aria-label="Add Vendor" [disabled]="disableRemove" (click)="idxToRemove.emit(idx)">
+        <mat-icon >remove</mat-icon>
+    </button>
+</div>

@@ -1,4 +1,3 @@
-import { AddLabelDirective } from './../directives/stock-directives/add-label';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CreateComponentComponent } from './create-component/create-component.component';
@@ -12,11 +11,16 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-
+import { DualComponent } from './dual/dual.component';
+import { MatSelectModule } from '@angular/material/select';
+import { AddVendorComponent } from './add-vendor/add-vendor.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [CreateComponentComponent,
-    AddLabelDirective
+    DualComponent,
+    AddVendorComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +33,10 @@ import { MatDividerModule } from '@angular/material/divider';
     FormsModule,
     MatGridListModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatAutocompleteModule
   ],
   providers: [
 
